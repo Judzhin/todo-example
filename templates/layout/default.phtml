@@ -1,0 +1,52 @@
+<?php
+
+$this->headLink()
+    ->prependStylesheet('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css')
+    ->prependStylesheet('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css');
+
+$this->inlineScript()
+    ->prependFile('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js')
+    ->prependFile('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js')
+    ->prependFile('https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.8.16/dayjs.min.js')
+    ->prependFile('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js');
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="shortcut icon" href="https://framework.zend.com/ico/favicon.ico"/>
+    <?= $this->headTitle('Example')->setSeparator(' - ')->setAutoEscape(false) ?>
+    <?= $this->headMeta() ?>
+    <?= $this->headLink() ?>
+    <style>
+        body {
+            padding-top: 70px;
+        }
+
+        .app {
+            min-height: 100vh;
+        }
+
+        .app-footer {
+            padding-bottom: 1em;
+        }
+
+        .zf-green, h2 a {
+            color: #68b604;
+        }
+    </style>
+</head>
+<body>
+
+<?= $this->content ?>
+
+<footer class="container">
+    <hr/>
+</footer>
+
+<?= $this->inlineScript() ?>
+
+</body>
+</html>

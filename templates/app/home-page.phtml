@@ -1,0 +1,60 @@
+<?php
+/**
+ * @access protected
+ * @author Judzhin Miles <info[woof-woof]msbios.com>
+ */
+declare(strict_types=1);
+
+$this->inlineScript()
+    ->appendFile('app.js');
+?>
+
+<?php $this->inlineScript()->captureStart(); ?>
+
+TODO.ready({
+    container: '#todo',
+    socket: {},
+    store: {
+        data: <?= \Zend\Json\Encoder::encode($this->data); ?>
+    },
+    form: {
+        container: '#todo-form',
+    }
+});
+
+<?php $this->inlineScript()->captureEnd(); ?>
+
+<main class="container">
+    <div class="row justify-content-md-center">
+
+        <div id="todo" class="col-md-10">
+
+            <header id="todo-form" class="card-header">
+                <h3>Todo list</h3>
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Enter the task you want to solve" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-outline-primary todo-add ml-1" type="button">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </span>
+                </div>
+
+                <small class="form-text text-muted">
+                    Characters left to enter in the field: <span class="todo-limit"></span>
+                </small>
+            </header>
+
+            <div class="card-body">
+
+                <div class="card d-none">
+                    <div class="todo-list list-group list-group-flush"></div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</main>
+
+

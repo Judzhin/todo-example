@@ -1,0 +1,1 @@
+C:37:"PHPUnit\Runner\DefaultTestResultCache":188:{a:2:{s:7:"defects";a:0:{}s:5:"times";a:2:{s:59:"TODOTest\Handler\ConfigProviderTest::testDependenciesMethod";d:0.023;s:53:"TODOTest\Handler\ConfigProviderTest::testInvokeMethod";d:0.002;}}}

@@ -1,0 +1,71 @@
+version: '3.5'
+
+networks:
+  postgres: # custom network name
+    driver: bridge
+
+services:
+
+  todo-php-cli:
+    container_name: todo-php-cli
+    build:
+      context: ./docker/php/cli
+      dockerfile: Dockerfile
+    volumes:
+    - .:/var/www
+    tty: true
+
+  todo-php-superman:
+    container_name: todo-php-superman
+    build:
+      context: ./docker/php/superman
+      dockerfile: Dockerfile
+    volumes:
+    - .:/superman:cached
+    tty: true # don`t stop
+    ports:
+    - "9001:9001"
+
+  todo-php-fpm:
+    container_name: todo-php-fpm
+    build:
+      context: ./docker/php
+      dockerfile: Dockerfile
+    volumes:
+    - .:/var/www
+
+  todo-nginx:
+    container_name: todo-nginx
+    build:
+      context: ./docker/nginx
+      dockerfile: Dockerfile
+    volumes:
+    - .:/var/www
+    ports:
+    - "3107:80"
+
+  # postgres host.docker.internal
+  todo-postgres:
+    container_name: todo-pgsql
+    image: postgres:alpine # :12.0-alpine
+    volumes:
+    - ./data/postgres:/var/lib/postgresql/data
+    environment:
+    - "POSTGRES_USER=postgres"
+    - "POSTGRES_PASSWORD=postgres"
+    - "POSTGRES_DB=todo"
+    - "PGDATA=./data/postgres"
+    ports:
+    - "5432:5432"
+    tty: true # don`t stop
+    restart: unless-stopped
+
+  todo-pgadmin:
+    container_name: todo-pga
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-pgadmin}
+    ports:
+    - "${PGADMIN_PORT:-5050}:80"
+    restart: unless-stopped
