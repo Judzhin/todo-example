@@ -5,7 +5,7 @@
  */
 declare(strict_types=1);
 
-namespace TODOTest\Handler;
+namespace TODOTest;
 
 use PHPUnit\Framework\Constraint\IsType;
 use PHPUnit\Framework\TestCase;
@@ -13,7 +13,7 @@ use TODO\ConfigProvider;
 
 /**
  * Class ConfigProviderTest
- * @package TODOTest\Handler
+ * @package TODOTest
  */
 class ConfigProviderTest extends TestCase
 {

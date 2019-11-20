@@ -90,7 +90,6 @@ class MessageComponent implements MessageComponentInterface
      */
     public function onError(ConnectionInterface $conn, \Exception $e)
     {
-        echo "An error has occurred: {$e->getMessage()}\n";
         $conn->close();
     }
 }

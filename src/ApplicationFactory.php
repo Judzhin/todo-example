@@ -42,7 +42,7 @@ class ApplicationFactory implements FactoryInterface
 
         Tools\Console\ConsoleRunner::addCommands($cli);
 
-        $cli->setCommandLoader(new ContainerCommandLoader($container, $config['commands'] ?? []));
+        $cli->setCommandLoader(new ContainerCommandLoader($container, []));
 
         return $cli;
     }

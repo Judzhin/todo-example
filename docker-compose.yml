@@ -1,9 +1,5 @@
 version: '3.5'
 
-networks:
-  postgres: # custom network name
-    driver: bridge
-
 services:
 
   todo-php-cli:
