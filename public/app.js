@@ -34,13 +34,6 @@
         this.context = context;
         this.$options = $.extend({}, this.DEFAULTS, options);
         this.connection = new WebSocket(this.$options.url);
-
-        this.on('message', function (msg) {
-            console.log(JSON.parse(msg.data));
-        });
-        this.on('error', function (msg) {
-            console.log(msg);
-        });
     };
 
     TODOSocket.prototype = {
@@ -62,8 +55,6 @@
          * @param msg
          */
         send: function (msg) {
-            console.log("Information for send message");
-            console.log(msg);
             this.connection.send(JSON.stringify(msg));
         }
     };
@@ -276,8 +267,6 @@
         }, this));
 
         this.setData(data);
-
-        console.log(this.$data);
 
         var identifier = this.$data[this.idProperty];
         if (identifier.isEmpty()) {
