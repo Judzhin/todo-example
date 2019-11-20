@@ -27,9 +27,8 @@ use Zend\Http\PhpEnvironment\Response;
  */
 class HomePageHandlerTest extends TestCase
 {
-    public function testReturnsHtmlResponseWhenTemplateRendererProvided()
+    public function testCallHandlerMethod()
     {
-
         /** @var RouterInterface $router */
         $router = $this->prophesize(RouterInterface::class);
 
@@ -50,7 +49,9 @@ class HomePageHandlerTest extends TestCase
                 ->setLockAt(new \DateTimeImmutable)
         ]);
 
-        $objectManager->getRepository(Task::class)->willReturn($objectRepository);
+        $objectManager
+            ->getRepository(Task::class)
+            ->willReturn($objectRepository);
 
         $renderer
             ->render('app::home-page', Argument::type('array'))
