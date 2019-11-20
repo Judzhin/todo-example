@@ -5,26 +5,24 @@
  */
 declare(strict_types=1);
 
-namespace TODOTest;
+namespace TODOTest\Resolver;
 
 use Doctrine\ORM\EntityManagerInterface;
+
 use Interop\Container\ContainerInterface;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Prophecy\ObjectProphecy;
-use Ratchet\Server\IoServer;
-use Symfony\Component\Console\Application;
-use TODO\ApplicationFactory;
+use TODO\Resolver\PersistResolver;
+use TODO\Resolver\ResolverFactory;
+use TODO\Resolver\ResolverInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
- * Class ApplicationFactoryTest
- * @package TODOTest
+ * Class ResolverFactoryTest
+ * @package TODOTest\Resolver
  */
-class ApplicationFactoryTest extends TestCase
+class ResolverFactoryTest extends TestCase
 {
-    /**
-     *
-     */
     public function testInstance()
     {
         /** @var ContainerInterface|ObjectProphecy $container */
@@ -34,11 +32,11 @@ class ApplicationFactoryTest extends TestCase
             ->willReturn($this->prophesize(EntityManagerInterface::class));
 
         /** @var FactoryInterface $factory */
-        $factory = new ApplicationFactory;
+        $factory = new ResolverFactory;
 
-        /** @var Application $cli */
-        $cli = $factory($container->reveal(), IoServer::class);
+        /** @var ResolverInterface $resolver */
+        $resolver = $factory($container->reveal(), PersistResolver::class);
 
-        $this->assertInstanceOf(Application::class, $cli);
+        $this->assertInstanceOf(ResolverInterface::class, $resolver);
     }
 }

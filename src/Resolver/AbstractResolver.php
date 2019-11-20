@@ -27,10 +27,11 @@ abstract class AbstractResolver implements ResolverInterface, ObjectManagerAware
     /**
      * AbstractResolver constructor.
      * @param ObjectManager $objectManager
+     * @param HydratorInterface $hydrator
      */
-    public function __construct(ObjectManager $objectManager)
+    public function __construct(ObjectManager $objectManager, HydratorInterface $hydrator)
     {
         $this->setObjectManager($objectManager);
-        $this->hydrator = new DoctrineObject($objectManager);
+        $this->hydrator = $hydrator;
     }
 }

@@ -18,7 +18,7 @@ class PersistResolver extends AbstractResolver
 {
     /** @var array  */
     private $operations = [
-        'record.add'
+        self::OPERATION_ADD
     ];
 
     /**
@@ -30,8 +30,6 @@ class PersistResolver extends AbstractResolver
         if (!in_array($values['operation'], $this->operations)) {
             return false;
         }
-
-        echo "Persist message\n";
 
         /** @var array $data */
         $data = $values['data'];

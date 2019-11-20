@@ -63,11 +63,11 @@ class ConfigProvider
                     MessageResolverFactory::class,
 
                 Resolver\PersistResolver::class =>
-                    ObjectableFactory::class,
+                    Resolver\ResolverFactory::class,
                 Resolver\MergeResolver::class =>
-                    ObjectableFactory::class,
+                    Resolver\ResolverFactory::class,
                 Resolver\RemoveResolver::class =>
-                    ObjectableFactory::class,
+                    Resolver\ResolverFactory::class,
 
                 MessageComponent::class =>
                     MessageComponentFactory::class
@@ -128,7 +128,7 @@ class ConfigProvider
     public function getWebSocket(): array
     {
         return [
-            'port' => 9002
+            'port' => 9001
         ];
     }
 

@@ -18,7 +18,7 @@ class RemoveResolver extends AbstractResolver
 {
     /** @var array  */
     private $operations = [
-        'record.drop',
+        self::OPERATION_DROP
     ];
 
     /**

@@ -16,12 +16,12 @@ use TODO\Entity\Task;
  */
 class MergeResolver extends AbstractResolver
 {
-    /** @var array  */
+    /** @var array */
     private $operations = [
-        'record.check',
-        'record.edit',
-        'record.reject',
-        'record.commit',
+        self::OPERATION_CHECK,
+        self::OPERATION_EDIT,
+        self::OPERATION_REJECT,
+        self::OPERATION_COMMIT
     ];
 
     /**

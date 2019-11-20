@@ -7,6 +7,7 @@ declare(strict_types=1);
 
 namespace TODOTest\Handler;
 
+use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use PHPUnit\Framework\TestCase;
@@ -38,7 +39,7 @@ class HomePageHandlerTest extends TestCase
         /** @var EntityManagerInterface $objectManager */
         $objectManager = $this->prophesize(EntityManagerInterface::class);
 
-        /** @var  $objectRepository */
+        /** @var ObjectRepository $objectRepository */
         $objectRepository = $this->prophesize(EntityRepository::class);
         $objectRepository->findAll()->willReturn([
             (new Task)
