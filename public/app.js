@@ -36,6 +36,10 @@
         this.connection = new WebSocket(this.$options.url);
     };
 
+    /**
+     *
+     * @type {{DEFAULTS: {url: string}, on: on, send: send}}
+     */
     TODOSocket.prototype = {
         DEFAULTS: {
             url: 'ws://localhost:9001'
@@ -71,6 +75,10 @@
         }
     }
 
+    /**
+     *
+     * @type {{isField: boolean, isString: boolean, value: undefined, DEFAULTS: {}}}
+     */
     TODOField.prototype = {
         isField: true,
         isString: true,
@@ -80,7 +88,7 @@
 
     /**
      *
-     * @returns {*}
+     * @returns {boolean}
      */
     TODOField.prototype.isEmpty = function () {
         return isEmpty(this.value);
@@ -114,19 +122,19 @@
 
     /**
      *
-     * @param map
-     * @param data
+     * @param options
+     * @returns {*}
      */
-    TODOField.factory = function (map) {
-        switch (map.type) {
+    TODOField.factory = function (options) {
+        switch (options.type) {
             case 'identifier':
-                return new TODOFieldIdentifier(map);
+                return new TODOFieldIdentifier(options);
             case 'integer':
-                return new TODOFieldInt(map);
+                return new TODOFieldInt(options);
             case 'date':
-                return new TODOFieldDate(map);
+                return new TODOFieldDate(options);
             default:
-                return new TODOField(map);
+                return new TODOField(options);
         }
     };
 
@@ -144,8 +152,13 @@
         }
     }
 
+    // extends
     TODOFieldIdentifier.prototype = Object.create(TODOField.prototype);
     TODOFieldIdentifier.prototype.constructor = TODOFieldIdentifier;
+
+    TODOFieldIdentifier.prototype.generate = function () {
+        this.setValue(broofa());
+    };
 
     /**
      *
@@ -270,7 +283,7 @@
 
         var identifier = this.$data[this.idProperty];
         if (identifier.isEmpty()) {
-            identifier.setValue(broofa());
+            identifier.generate();
         }
 
         this.$container = $(this.tmp);
