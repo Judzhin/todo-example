@@ -90,7 +90,6 @@
     "cs-check": "phpcs",
     "cs-fix": "phpcbf",
     "test": "phpunit --colors=always",
-    "test-coverage": "phpunit --colors=always --coverage-clover clover.xml",
-    "serve": "php -S 0.0.0.0:1997 -t public/ public/index.php"
+    "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
   }
 }
