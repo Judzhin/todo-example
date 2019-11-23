@@ -11,7 +11,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use Interop\Container\ContainerInterface;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Prophecy\ObjectProphecy;
-use Ratchet\Server\IoServer;
 use Symfony\Component\Console\Application;
 use TODO\ApplicationFactory;
 use Zend\ServiceManager\Factory\FactoryInterface;
@@ -37,7 +36,7 @@ class ApplicationFactoryTest extends TestCase
         $factory = new ApplicationFactory;
 
         /** @var Application $cli */
-        $cli = $factory($container->reveal(), IoServer::class);
+        $cli = $factory($container->reveal(), Application::class);
 
         $this->assertInstanceOf(Application::class, $cli);
     }
