@@ -14,10 +14,7 @@ use Ratchet\MessageComponentInterface;
 use Ratchet\Server\IoServer;
 use TODO\IoServerFactory;
 use TODO\MessageComponent;
-use TODO\MessageComponentFactory;
 use TODO\MessageResolver;
-use TODO\MessageResolverFactory;
-use TODO\Resolver\ResolverInterface;
 
 /**
  * Class IoServerFactoryTest
@@ -36,7 +33,7 @@ class IoServerFactoryTest extends TestCase
         $container->get(MessageComponent::class)
             ->willReturn($this->prophesize(MessageComponentInterface::class));
 
-        /** @var MessageComponentFactory $factory */
+        /** @var IoServerFactory $factory */
         $factory = new IoServerFactory;
 
         /** @var MessageResolver $server */
