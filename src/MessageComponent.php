@@ -71,8 +71,7 @@ class MessageComponent implements MessageComponentInterface
                         $client->send(Encoder::encode($message));
                     }
                 }
-            };
-
+            }
         }
     }
 
