@@ -14,7 +14,6 @@ use Ratchet\MessageComponentInterface;
 use Ratchet\Server\IoServer;
 use TODO\IoServerFactory;
 use TODO\MessageComponent;
-use TODO\MessageResolver;
 
 /**
  * Class IoServerFactoryTest
@@ -36,7 +35,7 @@ class IoServerFactoryTest extends TestCase
         /** @var IoServerFactory $factory */
         $factory = new IoServerFactory;
 
-        /** @var MessageResolver $server */
+        /** @var IoServer $server */
         $server = $factory($container->reveal(), IoServer::class);
 
         $this->assertInstanceOf(IoServer::class, $server);
