@@ -37,7 +37,7 @@ class IoServerFactoryTest extends TestCase
         $factory = new IoServerFactory;
 
         /** @var MessageResolver $server */
-        $server = $factory->__invoke($container->reveal(), IoServer::class);
+        $server = $factory($container->reveal(), IoServer::class);
 
         $this->assertInstanceOf(IoServer::class, $server);
     }
