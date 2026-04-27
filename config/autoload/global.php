@@ -11,7 +11,7 @@ use Doctrine\DBAL\Driver\PDOPgSql\Driver;
 
 return [
     'doctrine' => [
-        'dev_mode' => false,
+        'dev_mode' => true,
         'connection' => [
             'orm_default' => [
                 'driverClass' => Driver::class,
