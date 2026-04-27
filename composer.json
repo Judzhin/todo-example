@@ -38,7 +38,7 @@
     "forum": "https://discourse.zendframework.com/c/questions/expressive"
   },
   "require": {
-    "php": "^7.4",
+    "php": "^7.4 || ^8.0",
     "cboden/ratchet": "^0.4.1",
     "dasprid/container-interop-doctrine": "^1.1",
     "msbios/doctrine": "^1.0",
